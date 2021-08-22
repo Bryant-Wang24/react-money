@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Icon from "./Icon";
 // import x from 'icons/label.svg'      因为tree shaking的缘故，改用require来引入svg
 // console.log(x);
-require('icons/label.svg')
-require('icons/money.svg')
-require('icons/chart.svg')
+
 
 
 const NavWrapper = styled.nav`
@@ -34,25 +33,19 @@ const Nav = ()=>{
             <ul>
                 <li>
                     <Link to="/tags">
-                        <svg className="icon">
-                            <use xlinkHref="#label"/>
-                        </svg>
+                        <Icon name="label"/>
                         标签页
                     </Link>
                 </li>
                 <li>
                     <Link to="/money">
-                        <svg className="icon">
-                            <use xlinkHref="#money"/>
-                        </svg>
+                    <Icon name="money"/>
                         记账页  
                     </Link>
                 </li>
                 <li>
                     <Link to="/statistics">
-                        <svg className="icon">
-                            <use xlinkHref="#chart"/>
-                        </svg>
+                    <Icon name="chart"/>
                         统计页
                     </Link>
                 </li>
