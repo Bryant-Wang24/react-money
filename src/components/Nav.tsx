@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+// import x from 'icons/label.svg'
 
 const NavWrapper = styled.nav`
   border: 1px solid black;
@@ -18,6 +19,7 @@ const Nav = ()=>{
         <NavWrapper>
             <ul>
             <li>
+                {/* <img src={x} alt="" /> */}
               <Link to="/tags">标签页</Link>
             </li>
             <li>
