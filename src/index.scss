@@ -19,6 +19,9 @@ body{
     font-family: $font-hei;
     font-size: 16px;   
 }
+button {
+    font-family: inherit;
+  }
 :focus{
     outline: none;
   }
@@ -26,4 +29,9 @@ body{
     width: 1em;
     height: 1em;
     // display: inline-block;
+  }
+  .clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
   }
