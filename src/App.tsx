@@ -1,7 +1,6 @@
 
-import Nav from 'components/Nav';
+import Layout from 'components/Layout';
 import React from 'react';
-
 
 import {
   HashRouter as Router,
@@ -9,25 +8,10 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  border: 1px solid red;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-const Main = styled.div`
-  border: 1px solid green;
-  flex: 1;
-  overflow: auto;
-`
 
 export default function App() {
   return (
     <Router>
-      <Wrapper>
-        <Main>
         <Switch>
           <Route path="/tags">
             <Tags />
@@ -43,23 +27,32 @@ export default function App() {
               <NoMatch/>
           </Route>
         </Switch>
-        </Main>
-        <Nav/>
-      </Wrapper>
     </Router>
   );
 }
 
 function Tags() {
-  return <h2>Tags</h2>;
+  return(
+    <Layout>
+        <h2>标签页面</h2>
+    </Layout>
+  ) 
 }
 
 function Money() {
-  return <h2>Money</h2>;
+  return (
+    <Layout>
+      <h2>记账页面</h2>
+    </Layout>
+  )
 }
 
 function Statistics() {
-  return <h2>Statistics</h2>;
+  return (
+    <Layout>
+      <h2>统计页面</h2>
+    </Layout>
+  )
 }
 function NoMatch() {
   return <h2>兄滴，地址输错了吧</h2>;
