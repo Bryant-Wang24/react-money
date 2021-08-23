@@ -107,6 +107,7 @@ const NumberPadSection = styled.section`
   }
 `
 const MyLayout = styled(Layout)`
+border: 1px solid red;
   display:flex;
   flex-direction: column;
 `
