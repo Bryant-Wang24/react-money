@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Icon from "./Icon";
-// import x from 'icons/label.svg'      因为tree shaking的缘故，改用require来引入svg
+// import x from 'icons/tag.svg'      因为tree shaking的缘故，改用require来引入svg
 // console.log(x);
 
 
@@ -33,7 +33,7 @@ const Nav = ()=>{
             <ul>
                 <li>
                     <Link to="/tags">
-                        <Icon name="label"/>
+                        <Icon name="tag"/>
                         标签页
                     </Link>
                 </li>
