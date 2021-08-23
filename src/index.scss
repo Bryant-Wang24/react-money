@@ -19,6 +19,9 @@ body{
     font-family: $font-hei;
     font-size: 16px;   
 }
+:focus{
+    outline: none;
+  }
 .icon {
     width: 1em;
     height: 1em;
