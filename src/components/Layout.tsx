@@ -14,10 +14,10 @@ overflow: auto;
 `
 
 const Layout = (props: any)=>{
-    console.log('接收参数',props.children);
+    console.log('接收参数',props.children,props.className);
     return(
         <Wrapper>
-            <Main>
+            <Main className={props.className}>
                 {props.children}
             </Main>
             <Nav/>
