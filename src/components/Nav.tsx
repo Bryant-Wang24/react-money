@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Icon from "./Icon";
 // import x from 'icons/tag.svg'      因为tree shaking的缘故，改用require来引入svg
