@@ -7,7 +7,6 @@ import TagsSection from "./Money/TagsSection"
 
 
 const MyLayout = styled(Layout)`
-border: 1px solid red;
   display:flex;
   flex-direction: column;
 `
