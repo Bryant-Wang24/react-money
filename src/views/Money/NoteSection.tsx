@@ -21,10 +21,10 @@ const Wrapper = styled.section`
 
 const NoteSection:React.FC = ()=>{
   const [note,setNote] = useState('')
-  const refInput = useRef<HTMLInputElement>(null)
-  const onBlur = ()=>{
+  const refInput = useRef<HTMLInputElement>(null)  //获取Input输入框的值，null为设置的初始默认值
+  const onBlur = ()=>{   //鼠标离开输入框触发事件，类似于vue的.lazy修饰符
     if(refInput.current!==null){
-      setNote(refInput.current.value);
+      setNote(refInput.current.value); 
     }
   }
   // console.log(note);
