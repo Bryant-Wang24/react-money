@@ -26,8 +26,10 @@ const Wrapper = styled.section`
 `
 
 const CategorySection:React.FC = ()=>{
-  const categoryMap = {'+':'收入','-':'支出'}
-  const [categoryList] =useState<('+'|'-')[]>(['+','-']) 
+  const categoryMap = {'+':'收入','-':'支出'};
+  type X = typeof categoryMap    
+  type Y = keyof X     //获取 category的类型
+  const [categoryList] =useState<Y[]>(['+','-']) //这里的Y就是获取到的category的类型
   const [category,setCategory] = useState('-')
   return(
     <Wrapper>
