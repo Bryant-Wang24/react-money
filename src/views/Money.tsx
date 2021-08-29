@@ -18,6 +18,11 @@ const Money = () => {
     category:'-' as Category,
     amount:0
   })
+  //'obj:Partial<typeof selected>'表示obj的类型是 selected的类型 的一部分
+  const onChange=(obj:Partial<typeof selected>)=>setSelected({
+    ...selected,
+    ...obj
+  })
   return (
     <MyLayout>
       {selected.tags}
@@ -27,22 +32,10 @@ const Money = () => {
       {selected.category}
       <hr/>
       {selected.amount}
-      <TagsSection value={selected.tags} onChange={(tags)=>setSelected({
-        ...selected,
-        tags:tags
-      })} />
-      <NoteSection value={selected.note} onChange={(notes)=>setSelected({
-        ...selected,
-        note:notes
-      })} />
-      <CategorySection value={selected.category} onChange={(category)=>setSelected({
-        ...selected,
-        category:category
-      })} />
-      <NumberPadSection value={selected.amount} onChange={(amount)=>setSelected({
-        ...selected,
-        amount:amount
-      })} onOK={()=>{}} />
+      <TagsSection value={selected.tags} onChange={(tags)=>{onChange({tags:tags})}} />
+      <NoteSection value={selected.note} onChange={(note)=>{onChange({note:note})}} />
+      <CategorySection value={selected.category} onChange={(category)=>{onChange({category: category})}} />
+      <NumberPadSection value={selected.amount} onChange={(amount)=>{onChange({amount: amount})}} onOK={()=>{}} />
     </MyLayout>
   );
 };
