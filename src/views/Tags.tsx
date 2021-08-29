@@ -1,12 +1,17 @@
 import Layout from "components/Layout"
+import {useTags} from './useState';
 
 const Tags = () =>{
+  // const [tags,setTags] = useState(['衣','食','住','行'])
+  const {tags,setTags} = useTags()
     return(
       <Layout>
-          <h2>标签页面</h2>
-          <h1>总有些惊奇的际遇</h1>
-          <input type="text"  placeholder="比方说当我遇见你" />
+          <ol>
+            {tags.map(t=>
+              <li key={t}>{t}</li>
+            )}
+          </ol>
       </Layout>
-    ) 
+    )
 }
 export default Tags

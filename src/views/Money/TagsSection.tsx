@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React from "react";
+import {useTags} from '../useState';
 
 const Wrapper = styled.section`
   background: #FFFFFF; padding: 12px 16px;
@@ -27,7 +28,8 @@ type Props = {
 }
 const TagsSection: React.FC<Props> = (props) => {
   // 此处的”<string[]>“表示“['衣','食','住','行']“是一个字符串数组
-  const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
+  // const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
+  const {tags,setTags} = useTags()
   const  selectedTags = props.value
 
   const onToggleTag = (tag:string)=>{
