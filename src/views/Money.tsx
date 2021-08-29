@@ -25,6 +25,8 @@ const Money = () => {
       {selected.note}
       <hr/>
       {selected.category}
+      <hr/>
+      {selected.amount}
       <TagsSection value={selected.tags} onChange={(tags)=>setSelected({
         ...selected,
         tags:tags
@@ -37,7 +39,10 @@ const Money = () => {
         ...selected,
         category:category
       })} />
-      <NumberPadSection />
+      <NumberPadSection value={selected.amount} onChange={(amount)=>setSelected({
+        ...selected,
+        amount:amount
+      })} />
     </MyLayout>
   );
 };
