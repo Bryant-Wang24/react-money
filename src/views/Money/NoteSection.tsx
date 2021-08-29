@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef} from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.section`
@@ -18,13 +18,17 @@ const Wrapper = styled.section`
     }
   }
 `
-
-const NoteSection:React.FC = ()=>{
-  const [note,setNote] = useState('')
+type Props = {
+  value:string,
+  onChange:(value:string)=>void
+}
+const NoteSection:React.FC<Props> = (props)=>{
+  // const [note,setNote] = useState('')
+  const note = props.value
   const refInput = useRef<HTMLInputElement>(null)  //获取Input输入框的值，null为设置的初始默认值
   const onBlur = ()=>{   //鼠标离开输入框触发事件，类似于vue的.lazy修饰符
     if(refInput.current!==null){
-      setNote(refInput.current.value); 
+      props.onChange(refInput.current.value);
     }
   }
   // console.log(note);

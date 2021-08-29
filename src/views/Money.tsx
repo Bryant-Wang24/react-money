@@ -21,11 +21,16 @@ const Money = () => {
   return (
     <MyLayout>
       {selected.tags}
+      <hr/>
+      {selected.note}
       <TagsSection value={selected.tags} onChange={(tags)=>setSelected({
         ...selected,
         tags:tags
       })} />
-      <NoteSection />
+      <NoteSection value={selected.note} onChange={(notes)=>setSelected({
+        ...selected,
+        note:notes
+      })} />
       <CategorySection />
       <NumberPadSection />
     </MyLayout>
