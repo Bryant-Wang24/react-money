@@ -42,7 +42,7 @@ const Money = () => {
       <NumberPadSection value={selected.amount} onChange={(amount)=>setSelected({
         ...selected,
         amount:amount
-      })} />
+      })} onOK={()=>{}} />
     </MyLayout>
   );
 };

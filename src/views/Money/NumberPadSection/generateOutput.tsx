@@ -29,6 +29,8 @@ const generateOutput = (text: string, output: string) => {
       } else {
         return output + text;
       }
+    // case "OK":
+    //   return
     default:
       return "0";
   }

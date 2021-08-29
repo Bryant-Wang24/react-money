@@ -3,8 +3,9 @@ import { generateOutput } from "./NumberPadSection/generateOutput";
 import { Wrapper } from "./NumberPadSection/Wrapper";
 
 type Props = {
-  value:number,
+  value:number
   onChange:(value:number)=>void
+  onOK?:()=>void
 }
 const NumberPadSection: React.FC<Props> = (props) => {
   // const [output, _setOutput] = useState("0");
@@ -23,6 +24,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
     if (text === null) {
       return;
     }
+    if (text === 'OK' && props.onOK) {props.onOK?.();}
     if ("0123456789.".split("").concat(["删除", "清空"]).indexOf(text) >= 0) {
       setOutput(generateOutput(text, output));
     }
