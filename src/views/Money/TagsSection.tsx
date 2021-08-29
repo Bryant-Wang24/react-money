@@ -21,17 +21,22 @@ const Wrapper = styled.section`
     margin-top: 8px;
   }
 `
-const TagsSection: React.FC= () => {
+type Props = {
+  value:string[],
+  onChange:(value:string[])=>void
+}
+const TagsSection: React.FC<Props> = (props) => {
   // 此处的”<string[]>“表示“['衣','食','住','行']“是一个字符串数组
   const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
-  const [selectedTags,setSelectedTags] = useState<string[]>([])
+  const  selectedTags = props.value
+
   const onToggleTag = (tag:string)=>{
     const index = selectedTags.indexOf(tag)
     if(index>=0){
       // 如果 tag 已被选中，就复制所有没有被选中的 tag，作为新的 selectedTag
-      setSelectedTags(selectedTags.filter(t=>t!==tag))
+      props.onChange(selectedTags.filter(t=>t!==tag))
     }else{
-      setSelectedTags([...selectedTags,tag])
+      props.onChange([...selectedTags,tag])
     }
   }
   const addTag = ()=>{
