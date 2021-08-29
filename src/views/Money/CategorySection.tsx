@@ -24,18 +24,23 @@ const Wrapper = styled.section`
     }
   }
 `
-
-const CategorySection:React.FC = ()=>{
+type Category = '+'|'-'
+type Props = {
+  value:Category,
+  onChange:(value:Category)=>void
+}
+const CategorySection:React.FC<Props> = (props)=>{
   const categoryMap = {'+':'收入','-':'支出'};
   type X = typeof categoryMap    
   type Y = keyof X     //获取 category的类型
   const [categoryList] =useState<Y[]>(['+','-']) //这里的Y就是获取到的category的类型
-  const [category,setCategory] = useState('-')
+  // const [category,setCategory] = useState('-')
+  const category = props.value
   return(
     <Wrapper>
       <ul>
         {categoryList.map(c=>
-          <li key={c} className={category===c?'selected':''} onClick={()=>setCategory(c)}>{categoryMap[c]}</li>
+          <li key={c} className={category===c?'selected':''} onClick={()=> props.onChange(c)}>{categoryMap[c]}</li>
           )}
         {/* <li  className="selected">支出</li> */}
         
