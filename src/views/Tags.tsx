@@ -2,22 +2,25 @@ import Layout from "components/Layout"
 import {useTags} from './useState';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
+import { Link } from "react-router-dom";
 
 const TagList = styled.ol`
   font-size: 16px;
   background:white;
   > li{
-    //#e5e5e7
     border-bottom: 1px solid #d5d5d9;
     line-height: 20px;
-    padding: 12px 16px 12px 0;
     margin-left: 16px;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    > .icon{
-      width: 2em;
-      height: 2em;
+    >a{
+      //border: 1px solid red;
+      padding: 12px 16px 12px 0;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      > .icon{
+        width: 1.5em;
+        height: 1.5em;
+      }
     }
   }
 `;
@@ -38,15 +41,17 @@ const Space = styled.div`
 
 const Tags = () =>{
   // const [tags,setTags] = useState(['衣','食','住','行'])
-  const {tags,setTags} = useTags()
+  const {tags} = useTags()
     return(
       <Layout>
           <TagList>
-            {tags.map(t=>
-              <li key={t}>
-                <span className="oneLine">{t}很长很长很长很长很很长很长很长很长很长很长长很长</span>
-                <Icon name="right"/>
-              </li>
+            {tags.map(tag=>
+                <li key={tag}>
+                  <Link to={'/tags/' + tag}>
+                  <span className="oneLine">{tag}</span>
+                  <Icon name="right"/>
+                  </Link>
+                </li>
             )}
           </TagList>
         <Center>
