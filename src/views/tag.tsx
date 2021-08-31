@@ -1,16 +1,18 @@
-import styled from 'styled-components';
-import React from "react";
+
+import React from 'react';
 import { useParams } from 'react-router-dom';
+import {useTags} from './useState';
 
-const Wrapper = styled.div`
-  border: 1px solid red;
-`
 
+type Params ={
+  id:string
+}
 const Tag:React.FC = ()=>{
-  let tag: any;
-  ({tag} = useParams());
+  const {findTag} = useTags()
+  let {id} = useParams<Params>();
+  const tag = findTag(parseInt(id))
   return(
-    <Wrapper>{tag}</Wrapper>
+    <div>{tag.name}</div>
   )
 }
 export {Tag}
