@@ -1,9 +1,6 @@
 import {useState} from 'react';
-let id = 0
-const createId = ()=>{
-  id+=1
-  return id
-}
+import {createId} from "../lib/createId";
+
 const data = [
   {id:createId(),name:'衣'},
   {id:createId(),name:'食'},
