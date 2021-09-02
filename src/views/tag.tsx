@@ -23,18 +23,19 @@ const Topbar = styled.header`
   }
 `
 
-type Params ={
-  id:string
-}
+
 const InputWrapper = styled.div`
   background:white;
   padding: 0 16px;
   margin-top: 8px;
 `;
+type Params ={
+  id:string
+}
 const Tag:React.FC = ()=>{
   const {findTag} = useTags()
-  let {id} = useParams<Params>();
-  const tag = findTag(parseInt(id))
+  let { id:idString} = useParams<Params>();
+  const tag = findTag(parseInt(idString))
   return(
     <Layout>
       <Topbar>
