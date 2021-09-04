@@ -33,16 +33,11 @@ type Params ={
   id:string
 }
 const Tag:React.FC = ()=>{
-  const {findTag,updateTags} = useTags()
+  const {findTag,updateTags,deleteTags} = useTags()
   let { id:idString} = useParams<Params>();
   const tag = findTag(parseInt(idString))
-  return(
-    <Layout>
-      <Topbar>
-        <Icon name="left"/>
-        <span>编辑标签</span>
-        <Icon />
-      </Topbar>
+  const tagsContent = (tag:{id:number,name:string})=>
+    <div>
       <InputWrapper>
         <label>
           <Input label="标签名" value={tag.name}
@@ -54,8 +49,17 @@ const Tag:React.FC = ()=>{
         <Space/>
         <Space/>
         <Space/>
-        <Button>删除标签</Button>
+        <Button onClick={()=>deleteTags(tag.id)}>删除标签</Button>
       </Center>
+    </div>
+  return(
+    <Layout>
+      <Topbar>
+        <Icon name="left"/>
+        <span>编辑标签</span>
+        <Icon />
+      </Topbar>
+      {tag?tagsContent(tag):<Center>tag不存在</Center>}
     </Layout>
   )
 }
