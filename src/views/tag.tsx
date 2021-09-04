@@ -33,7 +33,7 @@ type Params ={
   id:string
 }
 const Tag:React.FC = ()=>{
-  const {findTag} = useTags()
+  const {findTag,updateTags} = useTags()
   let { id:idString} = useParams<Params>();
   const tag = findTag(parseInt(idString))
   return(
@@ -45,7 +45,9 @@ const Tag:React.FC = ()=>{
       </Topbar>
       <InputWrapper>
         <label>
-          <Input label="标签名" value={tag.name} type="text" placeholder="标签名" />
+          <Input label="标签名" value={tag.name}
+                 onChange={(e)=>{updateTags(tag.id,{name:e.target.value})}}
+                 type="text" placeholder="标签名" />
         </label>
       </InputWrapper>
       <Center>
