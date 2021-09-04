@@ -24,24 +24,28 @@ const useTags = ()=>{
   }
 
   //编辑更新标签
-  const updateTags = (id:number,obj:{name:string})=>{
-    //获取需要修改的标签对应的index
-    const index = findIndex(id)
-    //遵循react数据不可变的原则，深拷贝一份tags的值
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    // 把 tagsClone 的第 index 删掉，换成 {id:id, name: obj.name}
-    tagsClone.splice(index,1,{id,name:obj.name})
-    setTags(tagsClone)
-    console.log('tagsClone',tagsClone);
+  const updateTags = (id:number,{name}:{name:string})=>{
+    setTags(tags.map(tag => {
+      return tag.id === id ? {id, name} : tag;
+    }));
+    // //获取需要修改的标签对应的index
+    // const index = findIndex(id)
+    // //遵循react数据不可变的原则，深拷贝一份tags的值
+    // const tagsClone = JSON.parse(JSON.stringify(tags))
+    // // 把 tagsClone 的第 index 删掉，换成 {id:id, name: obj.name}
+    // tagsClone.splice(index,1,{id,name:obj.name})
+    // setTags(tagsClone)
+    // console.log('tagsClone',tagsClone);
   }
   const deleteTags = (id:number)=>{
-    //获取需要删除的标签对应的index
-    const index = findIndex(id)
-    //遵循react数据不可变的原则，深拷贝一份tags的值
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    // 把 tagsClone 的第 index 删掉，
-    tagsClone.splice(index,1)
-    setTags(tagsClone)
+    setTags(tags.filter(tag=>tag.id!==id))
+    // //获取需要删除的标签对应的index
+    // const index = findIndex(id)
+    // //遵循react数据不可变的原则，深拷贝一份tags的值
+    // const tagsClone = JSON.parse(JSON.stringify(tags))
+    // // 把 tagsClone 的第 index 删掉，
+    // tagsClone.splice(index,1)
+    // setTags(tagsClone)
   }
   return {tags,setTags,findTag, updateTags,deleteTags}
 }
