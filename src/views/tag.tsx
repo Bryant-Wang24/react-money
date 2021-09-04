@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory } from 'react-router-dom';
 import {useTags} from './useState';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
@@ -52,10 +52,15 @@ const Tag:React.FC = ()=>{
         <Button onClick={()=>deleteTags(tag.id)}>删除标签</Button>
       </Center>
     </div>
+  const history = useHistory()
+  const onClickBack = ()=>{
+    console.log('一致性');
+    history.goBack()
+  }
   return(
     <Layout>
       <Topbar>
-        <Icon name="left"/>
+        <Icon onClick={onClickBack} name="left"/>
         <span>编辑标签</span>
         <Icon />
       </Topbar>
