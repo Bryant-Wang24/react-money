@@ -47,7 +47,13 @@ const useTags = ()=>{
     // tagsClone.splice(index,1)
     // setTags(tagsClone)
   }
-  return {tags,setTags,findTag, updateTags,deleteTags}
+  const addTag = ()=>{
+    const tagName = window.prompt('请添加一个新的标签')
+    if(tagName){
+      setTags([...tags,{id:createId(),name:tagName}])
+    }
+  }
+  return {tags,setTags,findTag, updateTags,deleteTags,addTag}
 }
 
 export {useTags}

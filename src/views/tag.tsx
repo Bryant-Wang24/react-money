@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams,useHistory } from 'react-router-dom';
-import {useTags} from './useState';
+import {useTags} from './useTags';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import Icon from '../components/Icon';

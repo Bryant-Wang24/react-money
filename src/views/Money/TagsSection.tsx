@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import {useTags} from '../useState';
-import {createId} from "../../lib/createId";
+import {useTags} from '../useTags';
 
 const Wrapper = styled.section`
   background: #FFFFFF; padding: 12px 16px;
@@ -30,7 +29,7 @@ type Props = {
 const TagsSection: React.FC<Props> = (props) => {
   // 此处的”<string[]>“表示“['衣','食','住','行']“是一个字符串数组
   // const [tags,setTags] = useState<string[]>(['衣','食','住','行'])
-  const {tags,setTags} = useTags()
+  const {tags,addTag} = useTags()
   const  selectedTagIds = props.value
 
   const onToggleTag = (tagId:number)=>{
@@ -42,12 +41,7 @@ const TagsSection: React.FC<Props> = (props) => {
       props.onChange([...selectedTagIds,tagId])
     }
   }
-  const addTag = ()=>{
-    const tagName = window.prompt('请添加一个新的标签')
-    if(tagName){
-      setTags([...tags,{id:createId(),name:tagName}])
-    }
-  }
+
   const getClass = (tagId:number)=>selectedTagIds.indexOf(tagId)>=0 ? 'selected':''
     return(
         <Wrapper>

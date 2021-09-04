@@ -1,5 +1,5 @@
 import Layout from "components/Layout"
-import {useTags} from './useState';
+import {useTags} from './useTags';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
 import { Link } from "react-router-dom";
@@ -30,7 +30,7 @@ const TagList = styled.ol`
 
 const Tags = () =>{
   // const [tags,setTags] = useState(['衣','食','住','行'])
-  const {tags} = useTags()
+  const {tags,addTag} = useTags()
     return(
       <Layout>
           <TagList>
@@ -47,7 +47,7 @@ const Tags = () =>{
           <Space/>
           <Space/>
           <Space/>
-          <Button>新增标签</Button>
+          <Button onClick={addTag}>新增标签</Button>
         </Center>
       </Layout>
     )
