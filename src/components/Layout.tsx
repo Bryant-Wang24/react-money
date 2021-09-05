@@ -14,7 +14,6 @@ overflow: auto;
 `
 
 const Layout = (props: any)=>{
-    console.log('接收参数',props,props.children,props.className);
     return(
         <Wrapper>
             <Main className={props.className}>

@@ -54,7 +54,6 @@ const Tag:React.FC = ()=>{
     </div>
   const history = useHistory()
   const onClickBack = ()=>{
-    console.log('一致性');
     history.goBack()
   }
   return(
