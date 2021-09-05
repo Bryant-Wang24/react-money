@@ -10,8 +10,8 @@ type Props = {
 const NumberPadSection: React.FC<Props> = (props) => {
   // const [output, _setOutput] = useState("0");
   // const output = props.value.toString()
-  const [output,_setOutput] = useState(props.value.toString())
-  const setOutput = (output: string) => {
+  let [output,_setOutput] = useState(props.value.toString())
+  let setOutput = (output: string) => {
     let newOutput:string
     if (output.length > 16) {
       newOutput = output.slice(0, 16);
@@ -27,7 +27,14 @@ const NumberPadSection: React.FC<Props> = (props) => {
     if (text === null) {
       return;
     }
-    if (text === 'OK' && props.onOK) {props.onOK?.();}
+    // if (text === 'OK' && props.onOK) {props.onOK?.();}
+    if (text==='OK'){
+      if (props.onOK){
+        props.onOK()
+        setOutput('0')
+      }
+    }
+
     if ("0123456789.".split("").concat(["删除", "清空"]).indexOf(text) >= 0) {
       setOutput(generateOutput(text, output));
     }

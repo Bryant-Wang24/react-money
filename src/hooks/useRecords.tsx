@@ -17,10 +17,10 @@ const useRecords = ()=>{
   useUpdate(()=>{
     localStorage.setItem('records',JSON.stringify(records))
   },[records])
-const addRecords = (newRecord:newRecordItem)=>{
+const addRecord = (newRecord:newRecordItem)=>{
   const record = {...newRecord,createdAt:(new Date().toISOString())}
   setRecords([...records,record])
 }
-  return {records,addRecords}
+  return {records,addRecord}
 }
 export {useRecords}

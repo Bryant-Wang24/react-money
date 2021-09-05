@@ -6,6 +6,7 @@ import NumberPadSection from "./Money/NumberPadSection";
 import TagsSection from "./Money/TagsSection";
 import {useState} from 'react';
 import {useRecords} from '../hooks/useRecords';
+import {generateOutput} from './Money/NumberPadSection/generateOutput';
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -20,14 +21,14 @@ const defaultFormData = {
 };
 const Money = () => {
   const [selected,setSelected] = useState(defaultFormData)
-  const {addRecords} = useRecords()
+  const {addRecord} = useRecords()
   //'obj:Partial<typeof selected>'表示obj的类型是 selected的类型 的一部分
   const onChange=(obj:Partial<typeof selected>)=>setSelected({
     ...selected,
     ...obj
   })
   const onSubmit = ()=>{
-    addRecords(selected)
+    addRecord(selected)
     alert('保存成功')
     setSelected(defaultFormData)
   }
