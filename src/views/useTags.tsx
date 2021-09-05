@@ -1,5 +1,6 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {createId} from "../lib/createId";
+import {useUpdate} from '../hooks/useUpdate';
 
 const defaultTags = [
   {id:createId(),name:'衣'},
@@ -13,18 +14,8 @@ const useTags = ()=>{
     console.log('第一次渲染');
      setTags(JSON.parse(localStorage.getItem('tags') || '[]'))
   },[])
-  const count = useRef(0)
-  useEffect(()=>{
-    count.current+=1
-    console.log(count.current);
-  })
-  useEffect(()=>{//原本这里的useEffect会执行两次，第一次把tags变为空数组[],，第二次把空数组变成有值的数组
-    if (count.current>1){//设置一个值，把useEffect第一次的无效执行去掉
-      localStorage.setItem('tags',JSON.stringify(tags))
-      console.log(tags);
-      console.log('执行');
-    }
-
+  useUpdate(()=>{
+    localStorage.setItem('tags',JSON.stringify(tags))
   },[tags])
   const findTag = (id:number)=>
     tags.filter(tag=>tag.id===id)[0]
