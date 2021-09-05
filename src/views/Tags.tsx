@@ -1,12 +1,11 @@
 import Layout from "components/Layout"
-import {useTags} from './useTags';
+import {useTags} from '../hooks/useTags';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
 import { Link } from "react-router-dom";
 import {Button} from '../components/Button';
 import {Center} from '../components/Center';
 import {Space} from '../components/Space';
-import {useEffect} from 'react';
 
 const TagList = styled.ol`
   font-size: 16px;
@@ -16,7 +15,6 @@ const TagList = styled.ol`
     line-height: 20px;
     margin-left: 16px;
     >a{
-      //border: 1px solid red;
       padding: 12px 16px 12px 0;
       display:flex;
       justify-content: space-between;
