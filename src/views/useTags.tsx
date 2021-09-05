@@ -2,17 +2,19 @@ import {useEffect, useState} from 'react';
 import {createId} from "../lib/createId";
 import {useUpdate} from '../hooks/useUpdate';
 
-const defaultTags = [
-  {id:createId(),name:'衣'},
-  {id:createId(),name:'食'},
-  {id:createId(),name:'住'},
-  {id:createId(),name:'行'}
-]
 const useTags = ()=>{
   const [tags,setTags] = useState<{id:number,name:string}[]>([])
   useEffect(()=>{
-    console.log('第一次渲染');
-     setTags(JSON.parse(localStorage.getItem('tags') || '[]'))
+     let localTags = JSON.parse(localStorage.getItem('tags') || '[]')
+    if (localTags.length===0){
+      localTags = [
+        {id:createId(),name:'衣'},
+        {id:createId(),name:'食'},
+        {id:createId(),name:'住'},
+        {id:createId(),name:'行'}
+      ]
+    }
+    setTags(localTags)
   },[])
   useUpdate(()=>{
     localStorage.setItem('tags',JSON.stringify(tags))
@@ -57,11 +59,10 @@ const useTags = ()=>{
   }
   const addTag = ()=>{
     const tagName = window.prompt('请添加一个新的标签')
-    if(tagName){
+    if(tagName&&tagName.indexOf(' ')<0){
       setTags([...tags,{id:createId(),name:tagName}])
     }
   }
   return {tags,setTags,findTag, updateTags,deleteTags,addTag}
 }
-
 export {useTags}
