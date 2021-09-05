@@ -27,6 +27,8 @@ const generateOutput = (text: string, output: string) => {
       if (output.indexOf(".") >= 0) {
         return output;
       } else {
+        console.log('哈哈哈');
+        console.log('输出',output+text);
         return output + text;
       }
     // case "OK":
